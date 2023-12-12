@@ -702,7 +702,8 @@ def main(args):
 
     pytorch_pipe = SDP.from_pretrained(
         args.model_version,
-        use_auth_token=True,
+        safety_checker=None,
+        requires_safety_checker=False,
     )
 
     # Get Scheduler
@@ -724,7 +725,7 @@ def main(args):
         scheduler_override=user_specified_scheduler,
         controlnet_models=args.controlnet,
         force_zeros_for_empty_prompt=force_zeros_for_empty_prompt,
-        sources=args.model_sources,
+        sources=args.model_sources
     )
 
     if args.controlnet:
